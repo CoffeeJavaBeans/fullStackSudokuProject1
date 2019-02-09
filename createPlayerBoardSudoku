@@ -1,0 +1,44 @@
+function fillInGrid(puzzle,row,col,arr){
+    /* Fills in a 3x3 gid with array passed in  */
+    let n=Math.floor(row/3);
+    let m=Math.floor(col/3);
+    let k=0;
+    for(let i=n*3; i<(n*3)+3; i++){
+        for(let j=m*3; j<(m*3)+3; j++){
+            puzzle[i][j] = arr[k];
+            k++;
+           }
+       }
+}
+
+function makeRandomArray(){
+    /*returns an array with numbers 1 to 9 filled randomly */
+    let arr=[0,0,0,0,0,0,0,0,0];
+    for(let i=1; i<=9; i++){
+        let temp=Math.floor(Math.random()*8); //generate random indexes
+        if(arr[temp] === 0){
+            arr[temp] = i;
+        }else{
+            let nextOpen = arr.indexOf(0);
+            arr[nextOpen] =i;
+        }
+    }
+    return arr;
+}
+
+function createSudokuBoard(){
+    /*returns a suduko board */
+    let board=[...Array(9)].map(x=>Array(9).fill(0));
+    for(let i=0; i<9; i+=3){
+        fillInGrid(board,i,i,makeRandomArray());
+    }
+    solveSudoku(board);
+    for(let n=0; n<45;n++){ //randomly put zeros back in
+        let i=Math.floor(Math.random()*8); //generate random indexes
+        let j=Math.floor(Math.random()*8); //generate random indexes
+        board[i][j] = 0;
+    }
+    return board;
+}
+
+createSudokuBoard();
