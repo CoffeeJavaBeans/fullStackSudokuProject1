@@ -1,0 +1,21 @@
+body {
+    background-color: transparent;
+    /*background-image:url(flowers.jpeg); */
+    background-size: 1000px;
+    background-repeat: no-repeat;
+}
+
+#text{
+    display: grid;
+    padding: 10px 320px;
+    font-size: 18px;
+}
+
+#sudokuBoard {
+  display: grid;
+  grid-template-columns: 40px 40px 40px 40px 40px 40px 40px 40px 40px;
+  grid-template-rows:  40px 40px 40px 40px 40px 40px 40px 40px 40px;
+  background-color: transparent;
+  padding: 100px 320px;
+  text-align: center;
+}
